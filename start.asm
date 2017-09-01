@@ -14,6 +14,8 @@ start:
 ;this is an endless loop here.Make a note of this;later on,we will insert
 ;an 'extern _main',followed by 'call _main',right before the 'jmp $'
 stublet:
+    extern _main
+    call _main
     jmp $
 
 

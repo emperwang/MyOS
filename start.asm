@@ -20,7 +20,19 @@ stublet:
 
 
 ;shortly we will add code for loading the gdt right here!
-
+global _gdt_flush
+extern _gp
+_gdt_flush:
+    lgdt [_gp];  ;load  the GDT with our '_gp' whcih is a special pointer
+    mov ax,0x10  ;0x10 is the offset in the GDT to our data segment 
+    mov ds,ax
+    mov es,ax
+    mov fs,ax
+    mov gs,ax
+    mov ss,ax
+    jmp 0x08:flush2  ;0x08 is the offset to our code segment;Far jump!
+flush2:
+    ret             ;returns back to the c code!
 
 ;In just a few pages in this tutorial,we will add our interrupt 
 ;Service Routines (ISRs) right here!

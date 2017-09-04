@@ -6,7 +6,7 @@ unsigned char *memcpy(unsigned char *dest,const unsigned char *src,int count)
    const char *sp = (const char*)src;
    char * dp = (char *) dest;
    for(;count!=0;count--)
-       *dp = *sp++;
+       *dp++ = *sp++;
    return dest;
 }
 
